@@ -13,7 +13,7 @@ import { registerLocaleData } from '@angular/common';
 
 import { LoginComponent } from './@pages/login/login.component';
 import en from '@angular/common/locales/en';
-import { RegisterComponent } from './register/register.component';
+import { RegisterComponent } from './@pages/register/register.component';
 
 registerLocaleData(en);
 
