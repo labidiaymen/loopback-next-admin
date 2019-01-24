@@ -1,12 +1,8 @@
-# Loopback-next-admin
 # 📍📍This project is in heavy development 🔨
 
-Don't use it in production
+# 🛑 Don't use it in production 🛑
 
 
-# Files
-
-StackEdit stores your files in your browser, which means all your files are automatically saved locally and are accessible **offline!**
 
 ## How to run the project
 
