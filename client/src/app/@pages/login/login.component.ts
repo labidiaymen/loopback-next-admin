@@ -7,6 +7,7 @@ import {
   Validators
 } from '@angular/forms';
 import { GolablRoute } from '@sdk/default-router';
+import { UiService } from 'src/app/@core/services/ui.service';
 
 @Component({
   selector: 'lab-login',
@@ -16,6 +17,11 @@ import { GolablRoute } from '@sdk/default-router';
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
   submitForm(): void {
+    const loadingMessageId = this.UiService.displayLoadingIndicator('Chargement en cours ...');
+    setTimeout(() => {
+      this.UiService.hideLoadingIndicator(loadingMessageId);
+      this.UiService.displaySuccessMessage();
+    }, 2000);
     for (const i in this.validateForm.controls) {
       if (this.validateForm.controls[i]) {
         this.validateForm.controls[i].markAsDirty();
@@ -24,7 +30,7 @@ export class LoginComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private UiService: UiService) {
   }
 
   ngOnInit(): void {
