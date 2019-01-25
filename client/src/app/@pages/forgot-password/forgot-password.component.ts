@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { LabRouter } from '../../../../@sdk/lab-router';
-
+import { LabRouter } from '@sdk/lab-router';
 import {
   AbstractControl,
   FormBuilder,
@@ -10,11 +9,11 @@ import {
 import { GolablRoute } from '@sdk/default-router';
 
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.css']
+  selector: 'lab-forgot-password',
+  templateUrl: './forgot-password.component.html',
+  styleUrls: ['./forgot-password.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class ForgotPasswordComponent implements OnInit {
   validateForm: FormGroup;
   submitForm(): void {
     for (const i in this.validateForm.controls) {
@@ -25,7 +24,8 @@ export class RegisterComponent implements OnInit {
     }
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder) {
+  }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
@@ -36,16 +36,17 @@ export class RegisterComponent implements OnInit {
   }
 
   /**
- * @returns void
- */
-  navigateToLogin(): void {
-    LabRouter.next(GolablRoute.Login);
+   * @returns void
+   */
+  navigateToRegister(): void {
+    LabRouter.next(GolablRoute.Register);
   }
 
   /**
    * @returns void
    */
-  navigateToForgotPassword(): void {
-    LabRouter.next(GolablRoute.ForgotPassword);
+  navigateToLogin(): void {
+    LabRouter.next(GolablRoute.Login);
   }
+
 }

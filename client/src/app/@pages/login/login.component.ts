@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { LabRouter } from '@sdk/lab-router';
 import {
   AbstractControl,
   FormBuilder,
   FormGroup,
   Validators
 } from '@angular/forms';
+import { GolablRoute } from '@sdk/default-router';
 
 @Component({
   selector: 'lab-login',
@@ -13,11 +15,12 @@ import {
 })
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
-
   submitForm(): void {
     for (const i in this.validateForm.controls) {
-      this.validateForm.controls[i].markAsDirty();
-      this.validateForm.controls[i].updateValueAndValidity();
+      if (this.validateForm.controls[i]) {
+        this.validateForm.controls[i].markAsDirty();
+        this.validateForm.controls[i].updateValueAndValidity();
+      }
     }
   }
 
@@ -30,5 +33,19 @@ export class LoginComponent implements OnInit {
       password: [null, [Validators.required]],
       remember: [true]
     });
+  }
+
+  /**
+   * @returns void
+   */
+  navigateToRegister(): void {
+    LabRouter.next(GolablRoute.Register);
+  }
+
+  /**
+   * @returns void
+   */
+  navigateToForgotPassword(): void {
+    LabRouter.next(GolablRoute.ForgotPassword);
   }
 }

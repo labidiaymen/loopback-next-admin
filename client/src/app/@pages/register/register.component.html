@@ -3,6 +3,9 @@
   <div nz-col nzSpan="8">
     <form nz-form [formGroup]="validateForm" class="login-form" (ngSubmit)="submitForm()">
       <nz-form-item>
+        <h1>Register</h1>
+      </nz-form-item>
+      <nz-form-item>
         <nz-form-control>
           <nz-input-group [nzPrefix]="prefixUser">
             <input type="text" nz-input formControlName="userName" placeholder="Username">
@@ -25,10 +28,10 @@
           <label nz-checkbox formControlName="remember">
             <span>Remember me</span>
           </label>
-          <a class="login-form-forgot" class="login-form-forgot">Forgot password</a>
+          <a (click)="navigateToForgotPassword()" class="login-form-forgot" class="login-form-forgot">Forgot password</a>
           <button nz-button class="login-form-button" [nzType]="'primary'">Register</button>
           Or
-          <a href="">login</a>
+          <a (click)="navigateToLogin()">Login</a>
         </nz-form-control>
       </nz-form-item>
     </form>
