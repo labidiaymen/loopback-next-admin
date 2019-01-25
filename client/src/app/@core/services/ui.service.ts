@@ -60,7 +60,7 @@ export class UiService {
    * @returns string
    */
   displayErrorMessage(message?: string): string {
-    const displayedMessage = this.displayMessage(MessageType.Error, messsage);
+    const displayedMessage = this.displayMessage(MessageType.Error, message);
     return displayedMessage.messageId;
   }
 
