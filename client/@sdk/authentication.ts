@@ -1,15 +1,12 @@
 import { Resuqets } from './requests';
+import { HOST } from './config';
+import { Observable } from 'rxjs';
 
 export class Authentication {
   constructor(private resuqets: Resuqets) {
 
   }
-  static register() {
-    Resuqets.post('', {})
-      .subscribe((data) => {
-        console.log(data);
-      }, error => {
-        console.log(error);
-      });
+  static register(data = {}): Observable<any> {
+    return Resuqets.post(HOST + '/users', data);
   }
 }

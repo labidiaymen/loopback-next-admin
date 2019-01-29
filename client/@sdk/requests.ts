@@ -10,7 +10,11 @@ export class Resuqets {
   static post(url: string, body: any): Observable<any> {
     const post = fetch(url, {
       method: 'POST',
-      body
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
     });
     return from(post);
   }

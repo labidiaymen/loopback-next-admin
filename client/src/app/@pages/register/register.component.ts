@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LabRouter } from '../../../../@sdk/lab-router';
-
+import { omit } from 'lodash';
 import {
   AbstractControl,
   FormBuilder,
@@ -8,6 +8,8 @@ import {
   Validators
 } from '@angular/forms';
 import { GolablRoute } from '@sdk/default-router';
+import { Authentication } from '@sdk/authentication';
+import { UiService } from 'src/app/@core/services/ui.service';
 
 @Component({
   selector: 'app-register',
@@ -23,15 +25,27 @@ export class RegisterComponent implements OnInit {
         this.validateForm.controls[i].updateValueAndValidity();
       }
     }
+    if (this.validateForm.valid) {
+      const loadingMessageId = this.uiService.displayLoadingIndicator('Chargement en cours ...');
+      const formData = this.validateForm.getRawValue();
+      delete (formData['remember']);
+      Authentication.register(formData).subscribe(data => {
+        this.uiService.hideLoadingIndicator(loadingMessageId);
+        this.uiService.displaySuccessMessage();
+        this.navigateToLogin();
+        console.log(data);
+      }, console.error);
+    }
   }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder, private uiService: UiService) { }
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      fullName: [null, [Validators.required]],
-      userName: [null, [Validators.required]],
-      password: [null, [Validators.required]],
+      firstname: ['Labidi', [Validators.required]],
+      surname: ['Aymen', [Validators.required]],
+      email: ['labidi@aymen.co', [Validators.required]],
+      password: ['password', [Validators.required]],
       remember: [true]
     });
   }
