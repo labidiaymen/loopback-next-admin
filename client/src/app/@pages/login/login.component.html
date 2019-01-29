@@ -9,10 +9,10 @@
         <nz-form-item>
           <nz-form-control>
             <nz-input-group [nzPrefix]="prefixUser">
-              <input type="text" nz-input formControlName="userName" placeholder="Username">
+              <input type="text" nz-input formControlName="email" placeholder="email">
             </nz-input-group>
-            <nz-form-explain *ngIf="validateForm.get('userName').dirty && validateForm.get('userName').errors">Please
-              input your username!</nz-form-explain>
+            <nz-form-explain *ngIf="validateForm.get('email').dirty && validateForm.get('email').errors">Please
+              input your email!</nz-form-explain>
           </nz-form-control>
         </nz-form-item>
         <nz-form-item>

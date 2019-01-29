@@ -6,6 +6,6 @@
   "port": 27017,
   "user": "",
   "password": "",
-  "database": "",
+  "database": "lb-api",
   "useNewUrlParser": true
 }

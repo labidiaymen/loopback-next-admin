@@ -18,7 +18,6 @@ import { Authentication } from '@sdk/authentication';
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
   submitForm(): void {
-    Authentication.register();
     const loadingMessageId = this.uiService.displayLoadingIndicator('Chargement en cours ...');
     setTimeout(() => {
       this.uiService.hideLoadingIndicator(loadingMessageId);
@@ -30,6 +29,16 @@ export class LoginComponent implements OnInit {
         this.validateForm.controls[i].updateValueAndValidity();
       }
     }
+    if (this.validateForm.valid) {
+      const formData = this.validateForm.getRawValue();
+      delete (formData['remember']);
+
+      console.log(formData);
+      Authentication.login(formData).subscribe((result) => {
+        console.log(result.body);
+        console.log(result);
+      });
+    }
   }
 
   constructor(private fb: FormBuilder, private uiService: UiService) {
@@ -37,7 +46,7 @@ export class LoginComponent implements OnInit {
 
   ngOnInit(): void {
     this.validateForm = this.fb.group({
-      userName: [null, [Validators.required]],
+      email: [null, [Validators.required]],
       password: [null, [Validators.required]],
       remember: [true]
     });
