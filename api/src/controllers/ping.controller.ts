@@ -1,5 +1,11 @@
+// Copyright IBM Corp. 2018. All Rights Reserved.
+// Node module: @loopback/example-shopping
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
+
 import {Request, RestBindings, get, ResponseObject} from '@loopback/rest';
 import {inject} from '@loopback/context';
+import {} from '@loopback/openapi-v3-types';
 
 /**
  * OpenAPI response for ping()
@@ -16,10 +22,10 @@ const PING_RESPONSE: ResponseObject = {
           url: {type: 'string'},
           headers: {
             type: 'object',
-            properties: {
-              'Content-Type': {type: 'string'},
+            patternProperties: {
+              '^.*$': {type: 'string'},
             },
-            additionalProperties: true,
+            additionalProperties: false,
           },
         },
       },

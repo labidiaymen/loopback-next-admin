@@ -1,9 +1,14 @@
-import {Client} from '@loopback/testlab';
-import {AdminApi} from '../..';
-import {setupApplication} from './test-helper';
+// Copyright IBM Corp. 2018. All Rights Reserved.
+// Node module: @loopback/example-shopping
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
 
-describe('HomePage', () => {
-  let app: AdminApi;
+import {Client, expect} from '@loopback/testlab';
+import {ShoppingApplication} from '../..';
+import {setupApplication} from './helper';
+
+describe('HomePageController', () => {
+  let app: ShoppingApplication;
   let client: Client;
 
   before('setupApplication', async () => {
@@ -15,17 +20,10 @@ describe('HomePage', () => {
   });
 
   it('exposes a default home page', async () => {
-    await client
+    const res = await client
       .get('/')
       .expect(200)
       .expect('Content-Type', /text\/html/);
-  });
-
-  it('exposes self-hosted explorer', async () => {
-    await client
-      .get('/explorer/')
-      .expect(200)
-      .expect('Content-Type', /text\/html/)
-      .expect(/<title>LoopBack API Explorer/);
+    expect(res.body).to.match(/@loopback\/example\-shopping/);
   });
 });

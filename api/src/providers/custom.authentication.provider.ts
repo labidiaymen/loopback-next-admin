@@ -1,9 +1,13 @@
+// Copyright IBM Corp. 2017,2018. All Rights Reserved.
+// Node module: @loopback/authentication
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
 
-import { Getter, Provider, Setter, inject } from '@loopback/context';
-import { Request } from '@loopback/rest';
-import { AuthenticationBindings } from '@loopback/authentication';
-import { AuthenticateFn, UserProfile } from '@loopback/authentication';
-import { AuthenticationStrategy } from '../authentication-strategies/authentication.strategy';
+import {Getter, Provider, Setter, inject} from '@loopback/context';
+import {Request} from '@loopback/rest';
+import {AuthenticationBindings} from '@loopback/authentication';
+import {AuthenticateFn, UserProfile} from '@loopback/authentication';
+import {AuthenticationStrategy} from '../authentication-strategies/authentication.strategy';
 
 /**
  * @description Provider of a function which authenticates
@@ -23,7 +27,7 @@ export class AuthenticateActionProvider implements Provider<AuthenticateFn> {
     readonly getStrategy: Getter<AuthenticationStrategy>,
     @inject.setter(AuthenticationBindings.CURRENT_USER)
     readonly setCurrentUser: Setter<UserProfile>,
-  ) { }
+  ) {}
 
   /**
    * @returns authenticateFn

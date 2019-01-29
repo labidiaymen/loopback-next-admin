@@ -1,6 +1,10 @@
+// Copyright IBM Corp. 2018, 2019. All Rights Reserved.
+// Node module: @loopback4-example-shopping
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
 
-import { UserProfile } from '@loopback/authentication';
-import { Request } from '@loopback/rest';
+import {UserProfile} from '@loopback/authentication';
+import {Request} from '@loopback/rest';
 
 /**
  * An interface describes the common authentication strategy.

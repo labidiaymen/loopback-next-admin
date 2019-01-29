@@ -1,13 +1,17 @@
+// Copyright IBM Corp. 2018, 2019. All Rights Reserved.
+// Node module: @loopback4-example-shopping
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
 
 const jwt = require('jsonwebtoken');
-import { promisify } from 'util';
+import {promisify} from 'util';
 const verifyAsync = promisify(jwt.verify);
 // Consider turn it to a binding
 const SECRET = 'secretforjwt';
-import { Request, HttpErrors } from '@loopback/rest';
-import { UserProfile } from '@loopback/authentication';
+import {Request, HttpErrors} from '@loopback/rest';
+import {UserProfile} from '@loopback/authentication';
 import * as _ from 'lodash';
-import { AuthenticationStrategy } from './authentication.strategy';
+import {AuthenticationStrategy} from './authentication.strategy';
 
 export class JWTStrategy implements AuthenticationStrategy {
   async authenticate(request: Request): Promise<UserProfile | undefined> {

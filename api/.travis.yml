@@ -1,0 +1,32 @@
+sudo: false
+language: node_js
+node_js:
+  - '8'
+  - '10'
+
+os:
+  - linux
+  - osx
+
+before_script: ./bin/travis.sh
+script: npm run test:ci
+env: TASK=test
+install: npm install
+services:
+  - mongodb
+  - redis-server
+
+matrix:
+  include:
+    - node_js: '8'
+      os: linux
+      env: TASK=code-lint
+      script: npm run lint
+    - node_js: '8'
+      os: linux
+      env: TASK=commit-lint
+      script: commitlint-travis
+
+branches:
+  only:
+    - master

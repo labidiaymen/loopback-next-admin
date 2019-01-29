@@ -1,9 +1,14 @@
+// Copyright IBM Corp. 2018. All Rights Reserved.
+// Node module: @loopback/example-shopping
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
+
 import {Client, expect} from '@loopback/testlab';
-import {AdminApi} from '../..';
-import {setupApplication} from './test-helper';
+import {ShoppingApplication} from '../..';
+import {setupApplication} from './helper';
 
 describe('PingController', () => {
-  let app: AdminApi;
+  let app: ShoppingApplication;
   let client: Client;
 
   before('setupApplication', async () => {

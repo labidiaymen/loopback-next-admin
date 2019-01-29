@@ -1,6 +1,6 @@
 {
   "editor.rulers": [80],
-  "editor.tabCompletion": "on",
+  "editor.tabCompletion": true,
   "editor.tabSize": 2,
   "editor.trimAutoWhitespace": true,
   "editor.formatOnSave": true,
@@ -11,7 +11,7 @@
     "**/.hg": true,
     "**/.svn": true,
     "**/CVS": true,
-    "dist": true,
+    "dist*": true,
   },
   "files.insertFinalNewline": true,
   "files.trimTrailingWhitespace": true,

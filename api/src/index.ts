@@ -1,10 +1,16 @@
-import {AdminApi} from './application';
+// Copyright IBM Corp. 2018. All Rights Reserved.
+// Node module: @loopback/example-shopping
+// This file is licensed under the MIT License.
+// License text available at https://opensource.org/licenses/MIT
+
+import {ShoppingApplication} from './application';
 import {ApplicationConfig} from '@loopback/core';
 
-export {AdminApi};
+export {ShoppingApplication, PackageInfo, PackageKey} from './application';
 
-export async function main(options: ApplicationConfig = {}) {
-  const app = new AdminApi(options);
+export async function main(options?: ApplicationConfig) {
+  const app = new ShoppingApplication(options);
+
   await app.boot();
   await app.start();
 

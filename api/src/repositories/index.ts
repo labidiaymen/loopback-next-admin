@@ -4,3 +4,5 @@
 // License text available at https://opensource.org/licenses/MIT
 
 export * from './user.repository';
+export * from './shopping-cart.repository';
+export * from './order.repository';
