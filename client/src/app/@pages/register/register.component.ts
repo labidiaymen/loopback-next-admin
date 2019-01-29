@@ -30,10 +30,17 @@ export class RegisterComponent implements OnInit {
       const formData = this.validateForm.getRawValue();
       delete (formData['remember']);
       Authentication.register(formData).subscribe(data => {
-        this.uiService.hideLoadingIndicator(loadingMessageId);
-        this.uiService.displaySuccessMessage();
-        this.navigateToLogin();
         console.log(data);
+        if ('status' in data) {
+          const { status } = data;
+          if (status === 200) {
+            this.uiService.displaySuccessMessage();
+            this.navigateToLogin();
+          } else {
+            this.uiService.displayErrorMessage('register failed');
+          }
+        }
+        this.uiService.hideLoadingIndicator(loadingMessageId);
       }, console.error);
     }
   }
@@ -41,11 +48,18 @@ export class RegisterComponent implements OnInit {
   constructor(private fb: FormBuilder, private uiService: UiService) { }
 
   ngOnInit(): void {
+    // this.validateForm = this.fb.group({
+    //   firstname: ['Labidi', [Validators.required]],
+    //   surname: ['Aymen', [Validators.required]],
+    //   email: ['labidi@aymen.co', [Validators.required]],
+    //   password: ['password', [Validators.required]],
+    //   remember: [true]
+    // });
     this.validateForm = this.fb.group({
-      firstname: ['Labidi', [Validators.required]],
-      surname: ['Aymen', [Validators.required]],
-      email: ['labidi@aymen.co', [Validators.required]],
-      password: ['password', [Validators.required]],
+      firstname: ['', [Validators.required]],
+      surname: ['', [Validators.required]],
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]],
       remember: [true]
     });
   }
