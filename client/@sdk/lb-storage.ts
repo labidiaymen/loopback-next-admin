@@ -39,6 +39,9 @@ class LBStorage {
     localStorage.setItem('lb_context', contextToSave);
   }
 
+  /**
+   * @returns any
+   */
   static getContext(): any {
     try {
       const contextString = localStorage.getItem('lb_context');
