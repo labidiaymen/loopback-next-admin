@@ -9,6 +9,7 @@ import {
 import { GolablRoute } from '@sdk/default-router';
 import { UiService } from 'src/app/@core/services/ui.service';
 import { Authentication } from '@sdk/authentication';
+import { LBStorage } from '@sdk/lb-storage';
 
 @Component({
   selector: 'lab-login',
@@ -18,11 +19,7 @@ import { Authentication } from '@sdk/authentication';
 export class LoginComponent implements OnInit {
   validateForm: FormGroup;
   submitForm(): void {
-    const loadingMessageId = this.uiService.displayLoadingIndicator('Chargement en cours ...');
-    setTimeout(() => {
-      this.uiService.hideLoadingIndicator(loadingMessageId);
-      this.uiService.displaySuccessMessage();
-    }, 2000);
+
     for (const i in this.validateForm.controls) {
       if (this.validateForm.controls[i]) {
         this.validateForm.controls[i].markAsDirty();
@@ -33,11 +30,21 @@ export class LoginComponent implements OnInit {
       const formData = this.validateForm.getRawValue();
       delete (formData['remember']);
 
-      console.log(formData);
+      const loadingMessageId = this.uiService.displayLoadingIndicator('Chargement en cours ...');
       Authentication.login(formData).subscribe((result) => {
-        console.log(result.body);
         console.log(result);
-      });
+        if ('status' in result) {
+          const { status } = result;
+          if (status === 200) {
+            const { token } = result.json;
+            LBStorage.saveToken(token);
+            this.uiService.displaySuccessMessage('Login succeed');
+          } else {
+            this.uiService.displayErrorMessage('login failed!');
+          }
+        }
+        this.uiService.hideLoadingIndicator(loadingMessageId);
+      }, console.error);
     }
   }
 
