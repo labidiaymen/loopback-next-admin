@@ -15,6 +15,7 @@ import { LoginComponent } from './@pages/login/login.component';
 import en from '@angular/common/locales/en';
 import { RegisterComponent } from './@pages/register/register.component';
 import { ForgotPasswordComponent } from '@pages/forgot-password/forgot-password.component';
+import { HomeComponent } from './@pages/home/home.component';
 
 registerLocaleData(en);
 
@@ -25,7 +26,8 @@ registerLocaleData(en);
     ContentsComponent,
     LoginComponent,
     RegisterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

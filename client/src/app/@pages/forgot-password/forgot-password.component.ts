@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { GolablRoute } from '@sdk/default-router';
+import { GlobalRoute } from '@sdk/default-router';
 
 @Component({
   selector: 'lab-forgot-password',
@@ -39,14 +39,14 @@ export class ForgotPasswordComponent implements OnInit {
    * @returns void
    */
   navigateToRegister(): void {
-    LabRouter.next(GolablRoute.Register);
+    LabRouter.next(GlobalRoute.Register);
   }
 
   /**
    * @returns void
    */
   navigateToLogin(): void {
-    LabRouter.next(GolablRoute.Login);
+    LabRouter.next(GlobalRoute.Login);
   }
 
 }

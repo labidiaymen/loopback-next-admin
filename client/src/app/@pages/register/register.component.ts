@@ -7,7 +7,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { GolablRoute } from '@sdk/default-router';
+import { GlobalRoute } from '@sdk/default-router';
 import { Authentication } from '@sdk/authentication';
 import { UiService } from 'src/app/@core/services/ui.service';
 
@@ -68,13 +68,13 @@ export class RegisterComponent implements OnInit {
  * @returns void
  */
   navigateToLogin(): void {
-    LabRouter.next(GolablRoute.Login);
+    LabRouter.next(GlobalRoute.Login);
   }
 
   /**
    * @returns void
    */
   navigateToForgotPassword(): void {
-    LabRouter.next(GolablRoute.ForgotPassword);
+    LabRouter.next(GlobalRoute.ForgotPassword);
   }
 }

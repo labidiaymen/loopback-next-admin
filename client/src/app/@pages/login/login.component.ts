@@ -6,7 +6,7 @@ import {
   FormGroup,
   Validators
 } from '@angular/forms';
-import { GolablRoute } from '@sdk/default-router';
+import { GlobalRoute } from '@sdk/default-router';
 import { UiService } from 'src/app/@core/services/ui.service';
 import { Authentication } from '@sdk/authentication';
 import { LBStorage } from '@sdk/lb-storage';
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
           if (status === 200) {
             const { token } = result.json;
             LBStorage.saveToken(token);
+            LabRouter.next(GlobalRoute.Home);
             this.uiService.displaySuccessMessage('Login succeed');
           } else {
             this.uiService.displayErrorMessage('login failed!');
@@ -63,13 +64,13 @@ export class LoginComponent implements OnInit {
    * @returns void
    */
   navigateToRegister(): void {
-    LabRouter.next(GolablRoute.Register);
+    LabRouter.next(GlobalRoute.Register);
   }
 
   /**
    * @returns void
    */
   navigateToForgotPassword(): void {
-    LabRouter.next(GolablRoute.ForgotPassword);
+    LabRouter.next(GlobalRoute.ForgotPassword);
   }
 }
