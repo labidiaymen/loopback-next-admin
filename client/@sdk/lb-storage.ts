@@ -1,7 +1,7 @@
 import { isObject } from 'lodash';
 import { isString } from 'lodash';
 
-class LBStorage {
+export class LBStorage {
 
   /**
    * @param  {any} user
@@ -12,6 +12,39 @@ class LBStorage {
       userToSave = JSON.stringify(user);
     }
     localStorage.setItem('lb_user', userToSave);
+  }
+
+  /**
+   * @param  {string} token
+   * @returns bollean
+   */
+  static saveToken(token: string): boolean {
+    if (isString(token)) {
+      localStorage.setItem('lb_token', token);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  /**
+   * @returns string
+   */
+  static loadToken(): string {
+    const token = localStorage.getItem('lb_token') || '';
+    return token;
+  }
+
+  /**
+   * @returns boolean
+   */
+  static resetToken(): boolean {
+    try {
+      localStorage.removeItem('lb_token');
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   /**
