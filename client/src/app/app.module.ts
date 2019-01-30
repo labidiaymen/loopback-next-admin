@@ -16,6 +16,7 @@ import en from '@angular/common/locales/en';
 import { RegisterComponent } from './@pages/register/register.component';
 import { ForgotPasswordComponent } from '@pages/forgot-password/forgot-password.component';
 import { HomeComponent } from './@pages/home/home.component';
+import { ModulesModule } from './@modules/modules.module';
 
 registerLocaleData(en);
 
@@ -36,7 +37,9 @@ registerLocaleData(en);
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+  ],
+  exports: [
   ],
   providers: [{ provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]

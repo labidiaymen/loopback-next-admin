@@ -35,7 +35,7 @@ export async function getAccessTokenForUser(
 
   // Generate user token using JWT
   const token = await signAsync(currentUser, 'secretforjwt', {
-    expiresIn: 300,
+    expiresIn: '365d',
   });
 
   return token;

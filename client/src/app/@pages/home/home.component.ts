@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LBStorage } from '@sdk/lb-storage';
 import { HOST } from '@sdk/config';
 import { Resuqets } from '@sdk/requests';
+import { Authentication } from '@sdk/authentication';
 
 @Component({
   selector: 'app-home',
@@ -9,7 +10,7 @@ import { Resuqets } from '@sdk/requests';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  me: any;
+  me: any = {};
   constructor() { }
 
   ngOnInit() {
@@ -17,6 +18,12 @@ export class HomeComponent implements OnInit {
       console.log(result);
       this.me = result;
     });
+  }
+  /**
+   * @returns void
+   */
+  onLogut(): void {
+    Authentication.logout();
   }
 
 }
