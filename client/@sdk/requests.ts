@@ -1,4 +1,5 @@
 import { Observable, from } from 'rxjs';
+import { LBStorage } from './lb-storage';
 const parseJSON = (response) => {
   return new Promise((resolve) => response.json()
     .then((json) => resolve({
@@ -6,15 +7,8 @@ const parseJSON = (response) => {
       ok: response.ok,
       json,
     })));
-}
+};
 export class Resuqets {
-  /**
-   * Parses the JSON returned by a network request
-   *
-   * @param  {object} response A response from a network request
-   *
-   * @return {object}          The parsed JSON, status from the response
-   */
 
   /**
    * @param  {string} url
@@ -26,11 +20,25 @@ export class Resuqets {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + LBStorage.loadToken()
       },
       body: JSON.stringify(body)
     }).then(parseJSON);
 
     return from(post);
+  }
+
+  static get(url: string, query?: any): Observable<any> {
+    const get = fetch(url, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + LBStorage.loadToken()
+      },
+    }).then(respense => respense.json());
+
+    return from(get);
   }
 }
