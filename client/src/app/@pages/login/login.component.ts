@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { LabRouter } from '@sdk/lab-router';
 import {
-  AbstractControl,
   FormBuilder,
   FormGroup,
   Validators
 } from '@angular/forms';
 import { GlobalRoute, Modules } from '@sdk/default-router';
 import { UiService } from 'src/app/@core/services/ui.service';
-import { Authentication } from '@sdk/authentication';
+import { Authentication, authenticated } from '@sdk/authentication';
 import { LBStorage } from '@sdk/lb-storage';
 
 @Component({
@@ -39,6 +38,7 @@ export class LoginComponent implements OnInit {
             const { token } = result.json;
             LBStorage.saveToken(token);
             LabRouter.next(Modules.Dashboard);
+
             this.uiService.displaySuccessMessage('Login succeed');
           } else {
             this.uiService.displayErrorMessage('login failed!');
