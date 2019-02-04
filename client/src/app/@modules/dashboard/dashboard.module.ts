@@ -4,9 +4,11 @@ import { CommonModule } from '@angular/common';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { DashboardHomeComponent } from '../@pages/home/home.component';
 import { NgZorroAntdModule } from 'ng-zorro-antd';
+import { DashboardSettingsComponent } from '../@pages/settings/settings.component';
 @NgModule({
   declarations: [
-    DashboardHomeComponent
+    DashboardHomeComponent,
+    DashboardSettingsComponent
   ],
   imports: [
     NgZorroAntdModule,
