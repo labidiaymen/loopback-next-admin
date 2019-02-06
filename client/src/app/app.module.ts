@@ -9,7 +9,7 @@ import { NgZorroAntdModule, NZ_I18N, en_US } from 'ng-zorro-antd';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { registerLocaleData } from '@angular/common';
+import { registerLocaleData, APP_BASE_HREF } from '@angular/common';
 
 import { LoginComponent } from './@pages/login/login.component';
 import en from '@angular/common/locales/en';
@@ -41,7 +41,7 @@ registerLocaleData(en);
   ],
   exports: [
   ],
-  providers: [{ provide: NZ_I18N, useValue: en_US }],
+  providers: [{ provide: APP_BASE_HREF, useValue: '/' }, { provide: NZ_I18N, useValue: en_US }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
