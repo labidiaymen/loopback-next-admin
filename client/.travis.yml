@@ -18,4 +18,5 @@ before_script:
  - sudo dpkg -i google-chrome*.deb
 
 script:
-  - cd client && npm test
+  - cd client
+  - npm test
