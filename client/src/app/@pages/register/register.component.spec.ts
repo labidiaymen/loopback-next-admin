@@ -1,5 +1,7 @@
 import { fakeAsync, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RegisterComponent } from './register.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 describe('RegisterComponent', () => {
   let component: RegisterComponent;
@@ -7,9 +9,10 @@ describe('RegisterComponent', () => {
 
   beforeEach(fakeAsync(() => {
     TestBed.configureTestingModule({
-      declarations: [ RegisterComponent ]
+      imports: [ReactiveFormsModule, NgZorroAntdModule],
+      declarations: [RegisterComponent]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(RegisterComponent);
     component = fixture.componentInstance;
