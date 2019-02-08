@@ -16,4 +16,4 @@ script:
   - npm install
   - npm test
   - npm install codecov -g
-  - codecov --token=c76c9a92-e521-44c6-80fb-ce20d5deb9f8
+  - nyc report --reporter=text-lcov > coverage.lcov && codecov --token=c76c9a92-e521-44c6-80fb-ce20d5deb9f8
