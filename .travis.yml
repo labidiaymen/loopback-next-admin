@@ -12,4 +12,6 @@ before_script:
  - sudo apt-get update
 
 script:
-  - cd client && npm test
+  - cd client
+  - npm install
+  - npm test
