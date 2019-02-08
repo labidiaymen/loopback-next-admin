@@ -1,4 +1,5 @@
 import 'jest-preset-angular';
+declare var global;
 const { Response, Request, Headers, fetch } = require('whatwg-fetch');
 // global.Response = Response;
 // global.Request = Request;

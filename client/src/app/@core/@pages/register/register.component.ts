@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LabRouter } from '../../../../@sdk/lab-router';
 import { omit } from 'lodash';
 import {
   AbstractControl,
@@ -10,6 +9,7 @@ import {
 import { GlobalRoute } from '@sdk/default-router';
 import { Authentication } from '@sdk/authentication';
 import { UiService } from 'src/app/@core/services/ui.service';
+import { LabRouter } from '@sdk/lab-router';
 
 @Component({
   selector: 'app-register',

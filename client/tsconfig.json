@@ -20,7 +20,7 @@
     ],
     "paths": {
       "@pages/*": [
-        "./src/app/@pages/*"
+        "./src/app/@core/@pages/*"
       ],
       "@sdk/*": [
         "./@sdk/*"
