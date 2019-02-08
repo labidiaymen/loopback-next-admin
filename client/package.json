@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "jest",
+    "test": "nyc jest",
     "test:watch": "jest --watch",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -44,6 +44,7 @@
     "jasmine-spec-reporter": "~4.2.1",
     "jest": "^24.1.0",
     "jest-preset-angular": "^6.0.2",
+    "nyc": "^13.2.0",
     "prettier": "^1.16.1",
     "protractor": "~5.4.0",
     "ts-node": "~7.0.0",
