@@ -1,4 +1,5 @@
-# 📍📍This project is in heavy development 🔨 ![CI BUILD ](https://api.travis-ci.org/labidiaymen/loopback-next-admin.svg?branch=master
+# 📍📍This project is in heavy development 🔨
+![CI BUILD ](https://api.travis-ci.org/labidiaymen/loopback-next-admin.svg?branch=master
 )
 ![Loopback next admin ](https://i.ibb.co/k9xz6wx/Capture-d-e-cran-2019-01-30-a-17-07-44.png
 )
