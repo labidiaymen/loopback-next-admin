@@ -5,8 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "test": "nyc jest",
+    "test": "nyc jest  --coverage",
     "test:watch": "jest --watch",
+    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov --token=c76c9a92-e521-44c6-80fb-ce20d5deb9f8",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
