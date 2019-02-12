@@ -26,7 +26,20 @@
   <nz-layout>
     <nz-sider [nzWidth]="200" style="background:#fff">
       <ul nz-menu [nzMode]="'inline'" style="height:100%">
-        <li nz-submenu>
+
+        <ng-container *ngFor="let menu of menus">
+          <li nz-submenu *ngIf="menu.chields">
+            <span title><i nz-icon [type]="menu.iconType"></i>{{menu.text}}</span>
+            <ul>
+              <li *ngFor="let chieldMenu of menu.chields" nz-menu-item>{{chieldMenu.text}}</li>
+            </ul>
+          </li>
+          <li *ngIf="!menu.chields" class="menu-item"><i nz-icon [type]="menu.iconType"></i>{{menu.text}}</li>
+        </ng-container>
+
+
+
+        <!-- <li nz-submenu>
           <span title><i nz-icon type="user"></i>User</span>
           <ul>
             <li nz-menu-item>Logout</li>
@@ -52,7 +65,7 @@
             <li nz-menu-item>option11</li>
             <li nz-menu-item>option12</li>
           </ul>
-        </li>
+        </li> -->
       </ul>
     </nz-sider>
     <nz-layout style="padding:0 24px 24px">

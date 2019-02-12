@@ -21,9 +21,9 @@ export class MenuService {
    * @param  {any} newMenuItem
    * @returns void
    */
-  addDashboardMenus(newMenuItem: MenuItem): void {
+  addDashboardMenus(newMenuItem: MenuItem[]): void {
     const currentMenus = this.menus.getValue();
-    currentMenus.push(newMenuItem);
+    currentMenus.push(...newMenuItem);
     this.menus.next(currentMenus);
   }
 
