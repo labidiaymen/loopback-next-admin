@@ -34,7 +34,12 @@
               <li *ngFor="let chieldMenu of menu.chields" nz-menu-item>{{chieldMenu.text}}</li>
             </ul>
           </li>
-          <li *ngIf="!menu.chields" class="menu-item"><i nz-icon [type]="menu.iconType"></i>{{menu.text}}</li>
+          <li *ngIf="!menu.chields" nz-menu-item nz-tooltip nzPlacement="right">
+            <span title>
+              <i nz-icon [type]="menu.iconType"></i>
+              <span>{{menu.text}}</span>
+            </span>
+          </li>
         </ng-container>
 
 
